@@ -1,0 +1,17 @@
+build
+config
+coverage
+dist
+docs
+node_modules
+scripts
+public
+
+src/node
+src/preload.js
+
+*.d.ts
+
+package.json
+package-lock.json
+config-overrides.js

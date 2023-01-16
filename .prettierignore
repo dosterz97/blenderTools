@@ -1,0 +1,15 @@
+# dirs
+.cache
+.vscode
+assets
+bin
+build
+dist
+keys
+node_modules
+public
+
+# files
+package.json
+package-lock.json
+yarn.lock

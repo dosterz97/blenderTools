@@ -1,0 +1,39 @@
+.layout {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  gap: 4px;
+  user-select: none;
+}
+
+.label {
+  font-size: 8pt;
+  font-weight: bold;
+  color: #ffffff;
+  margin-left: 5px;
+}
+
+.input {
+  background-color: #49454d;
+  border: none;
+  border-radius: 2px;
+  color: #ffffff;
+  font-size: 10pt;
+  font-weight: bold;
+  margin: 0;
+  padding: 3px 6px;
+  transition: all 0.05s ease-in;
+
+  &::placeholder {
+    color: #8e8e8e;
+  }
+
+  &:focus-visible {
+    outline: none;
+    background-color: #6b686f;
+    &::placeholder {
+      color: #cdcbcb;
+    }
+  }
+}

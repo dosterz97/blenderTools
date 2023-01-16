@@ -1,0 +1,104 @@
+{
+  "name": "my-electron-app",
+  "description": "My Electron App",
+  "author": "doster.zach@gmail.com",
+  "version": "0.1.0",
+  "private": true,
+  "license": "LICENSE.md",
+  "main": "build/node/node/main.js",
+  "scripts": {
+    "start": "concurrently -k \"yarn start:app\" \"yarn start:electron\"",
+    "start:app": "cross-env BROWSER=NONE react-scripts start",
+    "start:electron": "yarn build:electron && wait-on http://127.0.0.1:3002 && electron .",
+    "build:all": "yarn build:app && yarn build:electron",
+    "build:app": "cross-env BUILD_PATH='./build/browser' react-scripts build",
+    "build:electron": "tsc -p ./src/node",
+    "dist": "yarn build:all && electron-builder",
+    "dist:unpacked": "yarn build:all && electron-builder --dir",
+    "release": "electron-builder --publish always",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx --max-warnings=0",
+    "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --max-warnings=0 --fix",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
+    "format:check": "prettier --check \"**/*.{js,jsx,ts,tsx,json,md}\""
+  },
+  "dependencies": {
+    "@amplitude/analytics-browser": "^1.6.6",
+    "@auth0/auth0-react": "^1.12.0",
+    "@rsuite/icons": "^1.0.2",
+    "axios": "^1.1.3",
+    "electron-is-dev": "^2.0.0",
+    "electron-log": "^4.4.8",
+    "electron-serve": "^1.1.0",
+    "electron-updater": "^5.3.0",
+    "immer": "^9.0.15",
+    "jose": "^4.10.4",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.4.3",
+    "rsuite": "^5.22.1",
+    "web-vitals": "^2.1.0"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^13.0.0",
+    "@testing-library/user-event": "^13.2.1",
+    "@types/electron": "^1.6.10",
+    "@types/jest": "^27.0.1",
+    "@types/node": "^16.7.13",
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "@typescript-eslint/eslint-plugin": "^5.13.0",
+    "@typescript-eslint/parser": "^5.13.0",
+    "babel-loader": "8.1.0",
+    "babel-plugin-named-asset-import": "^0.3.8",
+    "classnames": "^2.3.1",
+    "concurrently": "^7.2.2",
+    "cross-env": "^7.0.3",
+    "electron": "^19.0.7",
+    "electron-builder": "^23.1.0",
+    "eslint": "^7.10.0",
+    "eslint-config-prettier": "^7.2.0",
+    "eslint-config-react-app": "^6.0.0",
+    "eslint-import-resolver-typescript": "^2.4.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-webpack-plugin": "^2.5.0",
+    "javascript-obfuscator": "^4.0.0",
+    "pnp-webpack-plugin": "^1.7.0",
+    "prettier": "2.1.0",
+    "react-scripts": "5.0.1",
+    "release-it": "^15.1.3",
+    "sass": "^1.53.0",
+    "typescript": "^4.4.2",
+    "wait-on": "^6.0.1"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "release-it": {
+    "gitlab": {
+      "release": false
+    },
+    "plugins": {},
+    "npm": {
+      "publish": false
+    }
+  }
+}

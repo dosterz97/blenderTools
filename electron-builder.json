@@ -1,0 +1,37 @@
+{
+  "appId": "com.fastlanetech.my-electron-app",
+  "productName": "My Electron App",
+  "copyright": "Copyright © 2022 Fastlane Tech LLC.",
+  "extends": null,
+  "mac": {
+    "category": "public.app-category.utilities",
+    "entitlements": "dist/entitlements.mac.plist",
+    "entitlementsInherit": "dist/entitlements.mac.plist",
+    "icon": "assets/app-icon/mac/icon.icns"
+  },
+  "win": {
+    "target": "nsis",
+    "icon": "assets/app-icon/win/icon.png"
+  },
+  "directories": {
+    "buildResources": "dist",
+    "output": "dist/prod"
+  },
+  "files": [
+    "*/**",
+    "build/**",
+    "!dist/**",
+    "!public/**",
+    "!src/**",
+    "!unreal/**",
+    "!.vscode/**",
+    "!electron-builder.env"
+  ],
+  "extraResources": ["resources/**"],
+  "publish": {
+    "provider": "spaces",
+    "name": "myDigitalOceanName",
+    "region": "sfo3",
+    "acl": "public-read"
+  }
+}
